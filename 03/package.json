@@ -1,0 +1,26 @@
+{
+  "name": "3js-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+	"build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allihive/3js-exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/allihive/3js-exercises/issues"
+  },
+  "homepage": "https://github.com/allihive/3js-exercises#readme",
+  "dependencies": {
+    "three": "^0.180.0",
+    "vite": "^7.1.7"
+  }
+}
