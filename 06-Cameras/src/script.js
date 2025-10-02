@@ -1,7 +1,9 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 //different cameras: cube camera (environment), stereo camera (3D), orthographic (without perspective)
 //perspective camera
+//built in controls for camera, except transform & drag controls (create an editor)
 
 /**
  * Cursor
@@ -56,7 +58,11 @@ camera.position.z = 3
 camera.lookAt(mesh.position)
 scene.add(camera)
 
-
+//Controls
+const controls = new OrbitControls(camera, canvas) //camera and DOM element for mouse movements
+controls.enableDamping = true
+// damping remember to update in the animation loop
+//when to use controls vs when to do it yourself
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -80,10 +86,13 @@ const tick = () =>
 	// camera.lookAt(mesh.position)
 
 	//get the camera to go all the way around the cube x & z
-	camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
-	camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
-	camera.position.y = cursor.y * 5
-	camera.lookAt(mesh.position)
+	// camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+	// camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+	// camera.position.y = cursor.y * 5
+	// camera.lookAt(mesh.position)
+
+	//update controls
+	controls.update() //update on each frame
 
     // Render
     renderer.render(scene, camera)
