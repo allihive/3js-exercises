@@ -1,5 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
+import gsap from 'gsap'
 
 //Frame per second frame rate 60
 //requestAnimationFrame is to call the function provided on the next frame
@@ -38,6 +39,10 @@ renderer.setSize(sizes.width, sizes.height)
 //CLock
 const clock = new THREE.Clock()
 
+//GSAP more control between scenes and
+gsap.to(mesh.position, {duration: 1, delay: 1, x: 1}) //pass the element, and then the object
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0})
+
 //Animations
 const tick = () => {
 	//adapt to frame rate
@@ -49,11 +54,11 @@ const tick = () => {
 	//update objects
 	// mesh.rotation.y -= 0.002 * deltaTime //rotating at the same speed depending on the time rate
 
-	//Clock
-	const elapsedTime = clock.getElapsedTime()
-	mesh.position.y = Math.cos(elapsedTime)
-	mesh.position.x = Math.sin(elapsedTime)
-	mesh.rotation.x += 0.01
+	// //Clock
+	// const elapsedTime = clock.getElapsedTime()
+	// mesh.position.y = Math.cos(elapsedTime)
+	// mesh.position.x = Math.sin(elapsedTime)
+	// mesh.rotation.x += 0.01
 	
 	//render
 	renderer.render(scene, camera)
