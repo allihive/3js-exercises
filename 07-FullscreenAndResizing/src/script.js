@@ -22,9 +22,52 @@ scene.add(mesh)
  * Sizes
  */
 const sizes = {
-    width: 800,
-    height: 600
+    width: window.innerWidth,
+    height: window.innerHeight
 }
+window.addEventListener('resize', () => {
+	console.log('window has been resized')
+	//update sizes
+	sizes.width = window.innerWidth
+	sizes.height = window.innerHeight
+
+	//update camera
+	camera.aspect = sizes.width/sizes.height // also need to update projfection matrix
+	camera.updateProjectionMatrix() //cube is being stretched
+
+	//update renderer -> update the canvas
+	renderer.setSize(sizes.width, sizes.height)
+	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) //limit the ration to 2
+
+})
+
+window.addEventListener('dblclick', () => {
+	const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement // for safari
+
+	if (!fullscreenElement)
+	{
+		
+		if (canvas.requestFullscreen())
+		{
+			canvas.requestFullscreen()
+		}
+		else if (canvas.webkitFullscreenElement)
+		{
+			canvas.webkitRequestFullscreen()
+		}
+	}
+	else
+	{
+		if (document.exitFullscreen())
+		{
+			document.exitFullscreenFullscreen()
+		}
+		else if (document.webkitFullscreen)
+		{
+			document.webkitFullscreen()
+		}
+	}
+})
 
 /**
  * Camera
@@ -45,6 +88,7 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) //limit the ration to 2
 
 /**
  * Animate
