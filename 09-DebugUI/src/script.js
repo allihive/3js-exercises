@@ -10,6 +10,7 @@ lil-gui library popular, well maintained and easy to use
 import * as dat from 'lil-gui'
 tweaks: range, color, text, checkbox, select, button
 only twek properties of objects
+- add tweaks as you progress
 */
 
 /*Debug */
